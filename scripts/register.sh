@@ -1,5 +1,5 @@
 #!/bin/bash
-MYIP=$(ip a s dev eth0|sed -n 's/^ *inet \([0-9\.]\+\)\/.*$/\1/p')
+export MYIP=$(ip a s dev eth0|sed -n 's/^ *inet \([0-9\.]\+\)\/.*$/\1/p')
 FIGDIR=../figfiles
 
 # UPSTREAM=($(fig -p app -f ${FIGDIR}/wp.yml ps|tail -n+3|awk '{ print $NF}'| sed -n "s/^0\.0\.0\.0\:\([0-9]\+\)-.\+$/${MYIP}:\1/p"))
