@@ -2,6 +2,6 @@
 proxy:
   image: osssummit/nginx
   environment:
-    ETCD: ETC_IP_ADDR
+    ETCD: ETCD_IP_ADDR
   ports:
     - "80:80"
