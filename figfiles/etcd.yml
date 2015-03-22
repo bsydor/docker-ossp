@@ -1,0 +1,8 @@
+---
+etcd:
+  image: osssummit/etcd
+  environment:
+    ETCD: ETCD_IP_ADDR
+  ports:
+    - "4001:4001"
+    - "7001:7001"

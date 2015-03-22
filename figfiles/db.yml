@@ -1,0 +1,5 @@
+---
+db:
+  image: osssummit/mariadb
+  ports:
+    - "3306:3306"

@@ -1,0 +1,21 @@
+log_format upstreamlog '[$time_local] $remote_addr passed to: $upstream_addr: $request Upstream Response Time: $upstream_response_time Request time: $request_time';
+
+upstream apache_pool {
+{{ range getvs "/upstream/*" }}
+    server {{ . }};
+{{ end }}
+}
+
+server {
+    listen 80 default_server;
+
+    access_log /var/log/nginx/access.log upstreamlog;
+
+    location / {
+        proxy_pass http://apache_pool;
+        proxy_redirect off;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+}

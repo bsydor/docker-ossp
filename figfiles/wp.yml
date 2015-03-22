@@ -1,0 +1,15 @@
+---
+wp:
+  image: osssummit/wp
+  environment:
+    WP_URL: dockerX.sydor.net
+    WP_TITLE: "Open Source Summit 2015"
+    WP_ADMIN: admin
+    WP_ADMIN_PASSWORD: ossp.2015
+    WP_ADMIN_EMAIL: fake@email.com
+    DB_NAME: wp
+    DB_USER: wp
+    DB_PASSWORD: ossp.2015
+    DB_HOST: DB_IP_ADDR
+  ports:
+    - "80"
