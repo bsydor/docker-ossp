@@ -2,7 +2,7 @@
 
 echo Set host-specific variables
 MYHOSTNAME=$(hostname)
-MYIP=$(ip a s dev eth0|sed -n 's/^ *inet \([0-9\.]\+\)\/.*$/\1/p')
+MYIP=$(ip a s dev eth0|sed -n 's/^ *inet \([0-9\.]\+\)\/.*$/\1/p'|head -n1)
 PROJECT=infra
 FIGDIR=../figfiles
 
@@ -16,7 +16,7 @@ done
 echo Start etcd, proxy, and mysql containers
 for c in db etcd proxy
 do
-    fig -p ${PROJECT} -f ${FIGDIR}/${c}.yml up -d
+    docker-compose -p ${PROJECT} -f ${FIGDIR}/${c}.yml up -d
 done
 
 echo Set mysql credentials
